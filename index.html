@@ -1,0 +1,20 @@
+<html ng-app="KISIInfoscreen">
+<head>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+    <script src="/js/app.js"></script>
+</head>
+<body>
+    <clock></clock>
+    <div ng-controller="EventsController as EventsCtrl">
+        <div ng-repeat="event in eventsrunning | reverse">
+            <p ng-class="{'bold': event.featured}"><span ng-bind="event.start * 1000 | date:'HH:mm'"></span><span ng-show="event.hasEnd"> - <span ng-bind="event.end * 1000 | date:'HH:mm'"></span></span> | <span ng-bind="event.title"></span> (<span ng-bind="event.location"></span>)</p>
+        </div>
+        Test
+        <div ng-repeat="event in events">
+            <p ng-class="{'bold': event.featured}"><span ng-bind="event.start * 1000 | date:'HH:mm'"></span><span ng-show="event.hasEnd"> - <span ng-bind="event.end * 1000 | date:'HH:mm'"></span></span> | <span ng-bind="event.title"></span> (<span ng-bind="event.location"></span>)</p>
+        </div>
+    </div>
+</body>
+</html>
