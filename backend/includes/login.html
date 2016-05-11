@@ -1,0 +1,35 @@
+<div ng-class="{ 'login-form-error':  $root.loginmessage != '' }" class="login-form padding20 block-shadow">
+  <form ng-submit="submit()">
+    <h1 class="text-light">KISI Donation Backend</h1>
+    <hr class="thin"/>
+    <div ng-show="$root.loginmessage != ''">
+      <br/>
+      <p class="bg-red fg-white padding10 no-margin">
+        <b>Error:</b>&nbsp;{{$root.loginmessage}}
+      </p>
+    </div>
+    <br/>
+    <br/>
+    <div class="input-control text full-size" data-role="input">
+      <label for="user_login">User:</label>
+      <input id="user_login" name="user_login" ng-model="user.name" type="text">
+      <button class="button helper-button clear">
+        <span class="mif-cross"></span>
+      </button>
+    </div>
+    <br/>
+    <br/>
+    <div class="input-control password full-size" data-role="input">
+      <label for="user_password">Password:</label>
+      <input id="user_password" name="user_password" ng-model="user.password" type="password">
+      <button class="button helper-button reveal">
+        <span class="mif-looks"></span>
+      </button>
+    </div>
+    <br/>
+    <br/>
+    <div class="form-actions">
+      <button class="button primary" type="submit">Login</button>
+    </div>
+  </form>
+</div>

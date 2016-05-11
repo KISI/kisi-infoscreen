@@ -1,0 +1,56 @@
+.login-form {
+  width: 25rem;
+  height: 18.75rem;
+  position: fixed;
+  top: 50%;
+  margin-top: -9.375rem;
+  left: 50%;
+  margin-left: -12.5rem;
+  -webkit-transform: scale(.8);
+  transform: scale(.8);
+}
+.login-form-error {
+  width: 25rem;
+  height: 22rem;
+  position: fixed;
+  top: 50%;
+  margin-top: -11rem;
+  left: 50%;
+  margin-left: -12.5rem;
+  -webkit-transform: scale(.8);
+  transform: scale(.8);
+}
+.paddingtable {
+  padding-left: 10px;
+  padding-top: 20px;
+}
+.paddingtop60 {
+  padding-top: 60px;
+}
+.height100p {
+  height: 100%;
+}
+td.top {
+  vertical-align: top;
+}
+.bold {
+  font-weight: bold;
+}
+.align-right {
+  text-align: right;
+}
+.superscript {
+  position: relative;
+  top: -0.5em;
+  font-size: 80%;
+  border-radius: 5px;
+}
+.timeinput {
+  width:50px !important;
+}
+.titleinput {
+  width:300px !important;
+}
+.locationinput {
+  width:200px !important;
+}

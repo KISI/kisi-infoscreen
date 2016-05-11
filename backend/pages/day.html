@@ -1,0 +1,178 @@
+<div class="padding60">
+  <h1 class="text-light">Events<span class="mif-dollars place-right"></span>
+  </h1>
+  <hr class="thin bg-grayLighter">
+  <div data-role="preloader" data-style="color" data-type="metro" ng-hide="loaded"></div>
+  <div ng-show="loaded" ng-controller="DTOptionsController as dtOptionsCtrl">
+    <table datatable="ng" dt-options="dtOptionsCtrl.dtOptions" dt-column-defs="dtOptionsCtrl.dtColumnDefs" class="table border bordered no-footer" role="grid">
+      <thead>
+        <tr role="row">
+          <td>Start</td>
+          <td>End</td>
+          <td>End public?</td>
+          <td>Title</td>
+          <td>Location</td>
+          <td>Featured?</td>
+          <td>Live?</td>
+          <td>Actions</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="odd" ng-repeat="event in events" role="row" ng-controller="EventController">
+          <td>
+              <span ng-bind="event.start * 1000 | date:'H:mm'" ng-hide="switcher"></span>
+              <span ng-show="switcher">
+                <div class="input-control number timeinput">
+                    <input type="number" min="0" max="23" maxlength="2" required ng-model="newevent.starth">
+                </div>
+                <div class="input-control number timeinput">
+                    <input type="number" min="0" max="59" maxlength="2" required ng-model="newevent.startm">
+                </div>
+              </span>
+          </td>
+          <td>
+              <span ng-bind="event.end * 1000 | date:'H:mm'" ng-hide="switcher"></span>
+              <span ng-show="switcher">
+                <div class="input-control number timeinput">
+                    <input type="number" min="0" max="23" maxlength="2" required ng-model="newevent.endh">
+                </div>
+                <div class="input-control number timeinput">
+                    <input type="number" min="0" max="59" maxlength="2" required ng-model="newevent.endm">
+                </div>
+              </span>
+          </td>
+          <td>
+              <span ng-hide="switcher">
+                <span ng-show="event.hasEnd" class="mif-checkmark"></span>
+                <span ng-hide="event.hasEnd" class="mif-cross"></span>
+              </span>
+              <span ng-show="switcher">
+                <label class="input-control checkbox">
+                    <input type="checkbox" ng-model="newevent.hasEnd">
+                    <span class="check"></span>
+                </label>
+              </span>
+          </td>
+          <td>
+              <span ng-bind="event.title" ng-hide="switcher"></span>
+              <span ng-show="switcher">
+                <div class="input-control text titleinput">
+                    <input type="text" required ng-model="newevent.title">
+                </div>
+              </span>
+          </td>
+          <td>
+              <span ng-bind="event.location" ng-hide="switcher"></span>
+              <span ng-show="switcher">
+                <div class="input-control text locationinput">
+                    <input type="text" required ng-model="newevent.location">
+                </div>
+              </span>
+          </td>
+          <td>
+              <span ng-hide="switcher">
+                <span ng-show="event.featured" class="mif-checkmark"></span>
+                <span ng-hide="event.featured" class="mif-cross"></span>
+              </span>
+              <span ng-show="switcher">
+                <label class="input-control checkbox">
+                    <input type="checkbox" ng-model="newevent.featured">
+                    <span class="check"></span>
+                </label>
+              </span>
+          </td>
+          <td>
+              <span ng-hide="switcher">
+                <span ng-show="event.livestream" class="mif-checkmark"></span>
+                <span ng-hide="event.livestream" class="mif-cross"></span>
+              </span>
+              <span ng-show="switcher">
+                <label class="input-control checkbox">
+                    <input type="checkbox" ng-model="newevent.livestream">
+                    <span class="check"></span>
+                </label>
+              </span>
+          </td>
+          <td>
+              <span ng-hide="switcher">
+                <button class="button" ng-click="edit()">Edit</button>
+                <button class="button" ng-click="remove()">Remove</button>
+              </span>
+              <span ng-show="switcher">
+                <button class="button" ng-click="save()">Save</button>
+                <button class="button" ng-click="cancel()">Cancel</button>
+              </span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+      <p></p>    
+    <button class="button" ng-hide="adding" ng-click="adding = true">Add</button>
+    <table class="table border bordered no-footer" role="grid" ng-show="adding">
+      <thead>
+        <tr role="row">
+          <td>Start</td>
+          <td>End</td>
+          <td>End public?</td>
+          <td>Title</td>
+          <td>Location</td>
+          <td>Featured?</td>
+          <td>Live?</td>
+          <td>Actions</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="odd" role="row">
+          <td>
+            <div class="input-control number timeinput">
+                <input type="number" min="0" max="23" maxlength="2" required ng-model="newevent.starth">
+            </div>
+            <div class="input-control number timeinput">
+                <input type="number" min="0" max="59" maxlength="2" required ng-model="newevent.startm">
+            </div>
+          </td>
+          <td>
+            <div class="input-control number timeinput">
+                <input type="number" min="0" max="23" maxlength="2" required ng-model="newevent.endh">
+            </div>
+            <div class="input-control number timeinput">
+                <input type="number" min="0" max="59" maxlength="2" required ng-model="newevent.endm">
+            </div>
+          </td>
+          <td>
+            <label class="input-control checkbox">
+                <input type="checkbox" ng-model="newevent.hasEnd">
+                <span class="check"></span>
+            </label>
+          </td>
+          <td>
+            <div class="input-control text titleinput">
+                <input type="text" required ng-model="newevent.title">
+            </div>
+          </td>
+          <td>
+            <div class="input-control text locationinput">
+                <input type="text" required ng-model="newevent.location">
+            </div>
+          </td>
+          <td>
+            <label class="input-control checkbox">
+                <input type="checkbox" ng-model="newevent.featured">
+                <span class="check"></span>
+            </label>
+          </td>
+          <td>
+            <label class="input-control checkbox">
+                <input type="checkbox" ng-model="newevent.livestream">
+                <span class="check"></span>
+            </label>
+          </td>
+          <td>
+              <button class="button" ng-click="add()">Add</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+</div>

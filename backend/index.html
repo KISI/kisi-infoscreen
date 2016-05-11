@@ -1,0 +1,32 @@
+<html ng-app="kisiInfoscreenBackend">
+  <head>
+    <title>KISI Donation Backend</title>
+
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/metro.min.css" rel="stylesheet">
+    <link href="css/datatables.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/metro-icons.min.css" />
+    <link href="css/custom.css" rel="stylesheet">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js" type="text/javascript"></script>
+    <script src="js/datatables.min.js" type="text/javascript"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js" type="text/javascript"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-route.min.js" type="text/javascript"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-cookies.min.js" type="text/javascript"></script>
+    <script src="js/angular-datatables.min.js" type="text/javascript"></script>
+
+    <script src="js/metro.min.js" type="text/javascript"></script>
+
+    <script src="js/kisiInfoscreenBackend.js" type="text/javascript"></script>
+  </head>
+
+  <body>
+    <div class="height100p" ng-show="$root.isLogin">
+      <menu-top></menu-top>
+      <ng-view></ng-view>
+    </div>
+    <div ng-hide="$root.isLogin">
+      <login></login>
+    </div>
+  </body>
+</html>
