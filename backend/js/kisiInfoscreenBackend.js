@@ -144,7 +144,7 @@
       scope.switcher = true;
       scope.newevent = angular.copy(scope.event);
       var start = new Date(scope.newevent.start * 1000);
-      var end = new Date(scope.newevent.start * 1000);
+      var end = new Date(scope.newevent.end * 1000);
       scope.newevent.starth = start.getHours();
       scope.newevent.startm = start.getMinutes();
       scope.newevent.endh = end.getHours();

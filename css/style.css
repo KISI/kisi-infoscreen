@@ -1,3 +1,100 @@
+body {
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+    font-size: 5vh;
+    overflow: hidden;
+    background: url('../img/Programmhintegrund_Gelb.jpg') no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.row {
+    position:relative;
+    display: block;
+    width: 100%;
+    padding-top: 0.5%;
+    padding-bottom: 0.5%;
+}
+
+.left {
+    display: inline-block;
+    width: 10%;
+    text-align: right;
+    padding-right: 2%;
+}
+
+.right {
+    display: inline-block;
+    width: 80%;
+    padding-left:2%;
+    text-transform: uppercase;
+}
+
+.borderline {
+    position:absolute;
+    left:12%;
+    top:0;
+    width: 0.05%;
+    height: 100%;
+    background-color: black;
+}
+
+.datediv {
+    display: inline-block;
+    margin-bottom:3%;
+    margin-top:1%;
+    margin-left:2%;
+}
+
+.date {
+    display: block;
+    font-size: 0.5em;
+}
+
+.time {
+    display: inline-block;
+    font-size: 2.5em;
+    padding-left: 10%;
+    margin: auto;
+    font-weight: bold;
+}
+
+.day {
+    display: block;
+    text-transform: uppercase;
+    font-size: 1.5em;
+    margin-top:0;
+    font-weight: bold;
+    line-height: 1em;
+}
+
+.end {
+    font-size:0.6em;
+}
+
 .bold {
-    font-weight:700;
+    font-weight:600;
+}
+
+.running {
+    font-style: italic;
+}
+
+/* Animations */
+
+/*.eventsblock {
+    -webkit-animation: bounceInLeft 2s;
+    animation: bounceInLeft 2s;
+}*/
+
+.datediv {
+    -webkit-animation: fadeInLeft 2s;
+    animation: fadeInLeft 2s;
+}
+
+.time {
+    -webkit-animation: fadeInDown 2s;
+    animation: fadeInDown 2s;
 }
