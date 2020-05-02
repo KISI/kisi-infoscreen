@@ -17,13 +17,13 @@
     <!--<clock></clock>-->
     <heading></heading>
     <div ng-controller="EventsController as EventsCtrl" class="eventsblock">
-        <div ng-repeat="event in eventsrunning | reverse" class="events">
+        <div ng-repeat="event in eventsrunning" class="events">
             <div class="row event running" ng-class="{'bold': event.featured}">
                 <div class="left">
                     <span ng-bind="event.start * 1000 | date:'HH:mm'"></span>
                 </div>
                 <div class="borderline"></div>
-                <div class="right"><span ng-bind="event.title"></span> <span ng-show="event.location != ''">#<span ng-bind="event.location"></span></span> <span ng-show="event.hasEnd" class="end"> (bis <span ng-bind="event.end * 1000 | date:'HH:mm'"></span>)</span></div>
+                <div class="right"><span ng-bind="event.title"></span> <span ng-show="event.location != ''">@<span ng-bind="event.location"></span></span> <span ng-show="event.hasEnd" class="end"> (bis <span ng-bind="event.end * 1000 | date:'HH:mm'"></span>)</span></div>
             </div>
         </div>
         <div ng-repeat="event in events" class="events">
@@ -32,9 +32,25 @@
                     <span ng-bind="event.start * 1000 | date:'HH:mm'"></span>
                 </div>
                 <div class="borderline"></div>
-                <div class="right"><span ng-bind="event.title"></span> <span ng-show="event.location != ''">#<span ng-bind="event.location"></span></span> <span ng-show="event.hasEnd" class="end"> (bis <span ng-bind="event.end * 1000 | date:'HH:mm'"></span>)</span></div>
+                <div class="right"><span ng-bind="event.title"></span> <span ng-show="event.location != ''">@<span ng-bind="event.location"></span></span> <span ng-show="event.hasEnd" class="end"> (bis <span ng-bind="event.end * 1000 | date:'HH:mm'"></span>)</span></div>
             </div>
         </div>
     </div>
+	<!--<div id="legende">
+				<span class="element">
+					<img src="img/sponsor (1).jpg" />
+					<img src="img/sponsor (2).jpg" />
+					<img src="img/sponsor (3).jpg" />
+					<img src="img/sponsor (4).jpg" />
+					<img src="img/sponsor (5).jpg" />
+					<img src="img/sponsor (6).jpg" />
+					<img src="img/sponsor (7).jpg" />
+					<img src="img/sponsor (8).jpg" />
+					<img src="img/sponsor (9).jpg" />
+					<img src="img/sponsor (11).jpg" />
+				</span>
+			</div>-->
+<div id="background"></div>
+
 </body>
 </html>

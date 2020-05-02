@@ -1,14 +1,50 @@
 body {
     font-family: 'Lato', sans-serif;
     font-weight: 300;
-    font-size: 5vh;
+    font-size: 4vh;
     overflow: hidden;
-    background: url('../img/Programmhintegrund_Gelb.jpg') no-repeat center center fixed; 
+    background: url('../img/Background.png') no-repeat center center fixed;
+    /*background-image: url('../img/roundgreen.png'), url('../img/background.png');*/
+    background-blend-mode: soft-light;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
 }
+
+* {
+    color: white;
+}
+
+/*body:after {
+    content: "";
+    display: block;
+    position: absolute;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    background: url('../img/background.png') no-repeat center center fixed;
+    background-blend-mode: soft-light;
+    -webkit-background-size: contain;
+    -moz-background-size: contain;
+    -o-background-size: contain;
+    background-size: contain;
+}
+
+#background {
+    position: absolute;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    #background: url('../img/background.png') no-repeat center center fixed contain, url('../img/backgroundgreen.png') no-repeat center center fixed cover;
+    #background-blend-mode: soft-light;
+    #-webkit-background-size: contain;
+    #-moz-background-size: contain;
+    #-o-background-size: contain;
+    #background-size: contain;
+}*/
 
 .row {
     position:relative;
@@ -36,9 +72,9 @@ body {
     position:absolute;
     left:12%;
     top:0;
-    width: 0.05%;
+    width: 1px;
     height: 100%;
-    background-color: black;
+    background-color: white;
 }
 
 .datediv {
@@ -82,6 +118,23 @@ body {
     font-style: italic;
 }
 
+#legende {
+	margin:0 auto;
+	width:100%;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	background: white;
+	z-index:10;
+}
+
+#legende .element img{
+	/*max-width: 50px;*/
+	max-height: 37px;
+	margin: 3px;
+	position: relative;
+}
+
 /* Animations */
 
 /*.eventsblock {
@@ -97,4 +150,8 @@ body {
 .time {
     -webkit-animation: fadeInDown 2s;
     animation: fadeInDown 2s;
+}
+
+body {
+	margin-top:25px;
 }

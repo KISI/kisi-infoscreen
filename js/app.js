@@ -219,14 +219,14 @@ app.controller('EventsController', ['$scope', '$http', '$location', '$timeout', 
     var loadEvents = function() {
         if ($location.search()['livestream'] == 1)
         {
-            $http.get('/api/events?count=&livestream=1&start=' + (Math.round(Date.now() / 1000))).then(eventsSuccess, function(response) {
+            $http.get('/api/events?count=9&livestream=1&start=' + (Math.round(Date.now() / 1000) - (60 * 30))).then(eventsSuccess, function(response) {
                 console.log("error");
             });
         }
         else {
             $http.get('/api/events?count=9&reverse&minend=' + (Math.round(Date.now() / 1000) - (60 * 30)) + '&maxstart=' + (Math.round(Date.now() / 1000))).then(function(response){
                 eventsrunningSuccess(response);
-                $http.get('/api/events?count=' + Math.abs(9 - scope.eventsrunning.length) + livestream + '&start=' + (Math.round(Date.now() / 1000))).then(eventsSuccess, function(response) {
+                $http.get('/api/events?count=' + Math.abs(9 - scope.eventsrunning.length) + '&start=' + (Math.round(Date.now() / 1000))).then(eventsSuccess, function(response) {
                     console.log("error");
                 });
             }, function(response) {
