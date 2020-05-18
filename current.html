@@ -16,7 +16,7 @@
 <body class="nomargins">
     <div ng-controller="EventsController as EventsCtrl" class="eventsblock">
         <div ng-repeat="event in eventsrunning" class="events">
-            <div class="row event nomargins" ng-class="{'bold': event.featured}" ng-if="$index===0">
+            <div class="row event nomargins fullsize" ng-class="{'bold': event.featured}">
                 <span ng-bind="event.start * 1000 | date:'HH:mm'"></span>&nbsp;Uhr&nbsp;&ndash;&nbsp;<span ng-bind="event.title"></span>
             </div>
         </div>
