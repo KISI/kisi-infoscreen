@@ -1,37 +1,19 @@
 var app = angular.module('KISIInfoscreen', ['ngAnimate']);
 
 //--- Directives ---//
-app.directive('clock', function() {
-    return {
-        controller: ['$scope', '$timeout', function($scope, $timeout) {
-            var scope = $scope;
-            scope.time = Date.now();
-            
-            var tick = function() {
-                scope.time = Date.now();
-                $timeout(tick,1000);
-            }
-            
-            tick();
-        }],
-        scope: {},
-        template: '<p ng-bind="time | date:\'HH:mm:ss\'"></p>'
-    };
-});
-
 app.directive('heading', function() {
     return {
         controller: ['$scope', '$timeout', function($scope, $timeout) {
             var scope = $scope;
             
             scope.dayNames = [
-                "#Sonntag",
-                "#Montag",
-                "#Dienstag",
-                "#Mittwoch",
-                "#Donnerstag",
-                "#Freitag",
-                "#Samstag"
+                "Sonntag",
+                "Montag",
+                "Dienstag",
+                "Mittwoch",
+                "Donnerstag",
+                "Freitag",
+                "Samstag"
             ];
             
             scope.monthNames = [
@@ -80,7 +62,7 @@ app.directive('heading', function() {
             tick();
         }],
         scope: {},
-        template: '<div class="datediv"><span class="date" ng-bind="date.getDate() + \'. \' + getMonth() + \' \' + date.getFullYear()"></span><span class="day" ng-bind="getDay()"></span></div><div class="time"><span ng-bind="time | date:\'HH:mm:ss\'"></span></div>'
+        template: '<div class="datediv"><span ng-bind="getDay()"></span>,&nbsp;<span ng-bind="date.getDate() + \'. \' + getMonth() + \' \' + date.getFullYear()"></span>&nbsp;&ndash;&nbsp;<span class="bold"><span ng-bind="time | date:\'HH:mm\'"></span>&nbsp;Uhr</span><div class="heading"><b>HEUTE</b> STEHT AM<br/>PROGRAMM</div></div>'
     };
 });
 
@@ -168,6 +150,15 @@ app.controller('EventsController', ['$scope', '$http', '$location', '$timeout', 
         scope.events = scope.events.sort(function (a,b) {
             return a.start - b.start;
         });
+        for (var s = 0; s < scope.events.length; s++)
+        {
+            if (scope.events[s].start - Math.round(Date.now() / 1000) < 0 && Math.round(Date.now() / 1000) - scope.events[s].end < 0)
+            {
+                scope.events[s].running = true;
+            } else {
+                scope.events[s].running = false;
+            }
+        }  
         console.log("success");
     };
     
@@ -217,22 +208,15 @@ app.controller('EventsController', ['$scope', '$http', '$location', '$timeout', 
     };
     
     var loadEvents = function() {
-        if ($location.search()['livestream'] == 1)
-        {
-            $http.get('/api/events?count=9&livestream=1&start=' + (Math.round(Date.now() / 1000) - (60 * 30))).then(eventsSuccess, function(response) {
-                console.log("error");
-            });
-        }
-        else {
-            $http.get('/api/events?count=9&reverse&minend=' + (Math.round(Date.now() / 1000) - (60 * 30)) + '&maxstart=' + (Math.round(Date.now() / 1000))).then(function(response){
-                eventsrunningSuccess(response);
-                $http.get('/api/events?count=' + Math.abs(9 - scope.eventsrunning.length) + '&start=' + (Math.round(Date.now() / 1000))).then(eventsSuccess, function(response) {
-                    console.log("error");
-                });
-            }, function(response) {
-                console.log("error");
-            });
-        }
+        let date = Date.now();
+        /*$http.get('/api/events?count=20&start=' + (Math.round((date - date % 86400000) / 1000))).then(eventsSuccess, function(response) {
+            console.log("error");
+        });
+        $http.get('/api/events?count=1&reverse&maxstart=' + (Math.round(Date.now() / 1000))).then(function(response){
+            eventsrunningSuccess(response);
+        });*/
+        eventsrunningSuccess({"data":{"data":[{"id":114,"start":1589820300,"end":1589821200,"hasEnd":false,"title":"Gutenachtgeschichte","location":"","featured":false,"livestream":false}]}});
+        eventsSuccess({"data":{"data":[{"id":110,"start":1589796000,"end":1589799600,"hasEnd":false,"title":"Hl. Messe","location":"Innenhof","featured":false,"livestream":false},{"id":117,"start":1589801400,"end":1589803200,"hasEnd":false,"title":"Mittagessen","location":"","featured":false,"livestream":false},{"id":111,"start":1589806800,"end":1589807700,"hasEnd":false,"title":"Barmherzigkeitsrosenkranz","location":"","featured":true,"livestream":false},{"id":112,"start":1589807700,"end":1589810400,"hasEnd":false,"title":"KISI Lieder singen und tanzen","location":"","featured":false,"livestream":false},{"id":113,"start":1589814000,"end":1589820300,"hasEnd":false,"title":"Bibellesen","location":"","featured":false,"livestream":false},{"id":115,"start":1589817600,"end":1589819400,"hasEnd":false,"title":"Familienrosenkranz","location":"","featured":false,"livestream":false},{"id":114,"start":1589820300,"end":1589832000,"hasEnd":false,"title":"Gutenachtgeschichte","location":"","featured":false,"livestream":false},{"id":116,"start":1589832000,"end":1589832900,"hasEnd":false,"title":"Komplet","location":"","featured":false,"livestream":false}]}});
     }
     
     var tick = function() {

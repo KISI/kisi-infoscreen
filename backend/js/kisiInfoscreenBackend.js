@@ -121,6 +121,20 @@
         });
       }
     };
+
+    scope.clone = function() {
+      if (scope.newdate) {
+        var request = {
+          "date": scope.day,
+          "newdate": scope.newdate,
+        };
+        $http.post('/api/backend/events/clone', request).then(function(response) {
+          location.href = "/backend/#/" + scope.newdate;
+        }, function(response) {
+          console.log(response);
+        });
+      }
+    };
   }]);
   
   app.controller('EventController', ['$http', '$scope', '$rootScope', '$routeParams', function ($http, $scope, $rootScope, $routeParams) {
