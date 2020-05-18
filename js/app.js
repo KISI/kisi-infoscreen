@@ -209,14 +209,12 @@ app.controller('EventsController', ['$scope', '$http', '$location', '$timeout', 
     
     var loadEvents = function() {
         let date = Date.now();
-        /*$http.get('/api/events?count=20&start=' + (Math.round((date - date % 86400000) / 1000))).then(eventsSuccess, function(response) {
+        $http.get('/api/events?count=20&start=' + (Math.round((date - date % 86400000) / 1000))).then(eventsSuccess, function(response) {
             console.log("error");
         });
         $http.get('/api/events?count=1&reverse&maxstart=' + (Math.round(Date.now() / 1000))).then(function(response){
             eventsrunningSuccess(response);
-        });*/
-        eventsrunningSuccess({"data":{"data":[{"id":114,"start":1589820300,"end":1589821200,"hasEnd":false,"title":"Gutenachtgeschichte","location":"","featured":false,"livestream":false}]}});
-        eventsSuccess({"data":{"data":[{"id":110,"start":1589796000,"end":1589799600,"hasEnd":false,"title":"Hl. Messe","location":"Innenhof","featured":false,"livestream":false},{"id":117,"start":1589801400,"end":1589803200,"hasEnd":false,"title":"Mittagessen","location":"","featured":false,"livestream":false},{"id":111,"start":1589806800,"end":1589807700,"hasEnd":false,"title":"Barmherzigkeitsrosenkranz","location":"","featured":true,"livestream":false},{"id":112,"start":1589807700,"end":1589810400,"hasEnd":false,"title":"KISI Lieder singen und tanzen","location":"","featured":false,"livestream":false},{"id":113,"start":1589814000,"end":1589820300,"hasEnd":false,"title":"Bibellesen","location":"","featured":false,"livestream":false},{"id":115,"start":1589817600,"end":1589819400,"hasEnd":false,"title":"Familienrosenkranz","location":"","featured":false,"livestream":false},{"id":114,"start":1589820300,"end":1589832000,"hasEnd":false,"title":"Gutenachtgeschichte","location":"","featured":false,"livestream":false},{"id":116,"start":1589832000,"end":1589832900,"hasEnd":false,"title":"Komplet","location":"","featured":false,"livestream":false}]}});
+        });
     }
     
     var tick = function() {
