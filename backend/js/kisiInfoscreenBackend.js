@@ -105,8 +105,8 @@
     scope.add = function() {
       if (scope.adding) {
         var date = scope.day.split('-');
-        scope.newevent.start = (new Date(date[2],parseint(date[1])-1,parseint(date[0]),scope.newevent.starth,scope.newevent.startm)).getTime()/1000;
-        scope.newevent.end = (new Date(date[2],parseint(date[1])-1,parseint(date[0]),scope.newevent.endh,scope.newevent.endm)).getTime()/1000;
+        scope.newevent.start = (new Date(date[2],parseInt(date[1])-1,parseInt(date[0]),scope.newevent.starth,scope.newevent.startm)).getTime()/1000;
+        scope.newevent.end = (new Date(date[2],parseInt(date[1])-1,parseInt(date[0]),scope.newevent.endh,scope.newevent.endm)).getTime()/1000;
         $http.post('/api/backend/event', scope.newevent).then(function(response) {
           scope.newevent = {};
           scope.adding = false;
