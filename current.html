@@ -11,17 +11,22 @@
     <script src="https://code.jquery.com/jquery-2.2.3.min.js"   integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo="   crossorigin="anonymous"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.js"></script>
+    <script src="/js/fittext.js"></script>
     <script src="/js/app.js"></script>
 </head>
 <body class="nomargins">
     <div ng-controller="EventsController as EventsCtrl" class="eventsblock">
         <div ng-repeat="event in eventsrunning" class="events">
-            <div class="row event nomargins fullsize" ng-class="{'bold': event.featured}">
+            <div class="row event nomargins fullsize" id="fullsize" ng-class="{'bold': event.featured}">
                 <span ng-bind="event.start * 1000 | date:'HH:mm'"></span>&nbsp;Uhr&nbsp;&ndash;&nbsp;<span ng-bind="event.title"></span>
             </div>
         </div>
     </div>
 <div id="background"></div>
+
+<script>
+    window.fitText( document.getElementById("fullsize") );
+</script>
 
 </body>
 </html>
