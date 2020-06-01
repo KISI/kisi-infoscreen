@@ -1,5 +1,5 @@
 function resizer() {
-  if (!$('#fullsize')) {
+  if (!document.getElementById("eventsrunning") || !document.getElementById("fullsize")) {
     window.setTimeout(resizer,50);
   } else {
     $('body').on('DOMSubtreeModified', '#fullsize', resize);
@@ -8,7 +8,7 @@ function resizer() {
 }
 
 function resize() {
-  let width = document.getElementById("events").clientWidth;
+  let width = document.getElementById("eventsrunning").clientWidth;
   let textwidth = document.getElementById("fullsize").clientWidth;
   let size = 90;
   document.getElementById("fullsize").style.fontSize = size + "vh";
