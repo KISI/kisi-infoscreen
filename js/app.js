@@ -158,6 +158,12 @@ app.controller('EventsController', ['$scope', '$http', '$location', '$timeout', 
             } else {
                 scope.events[s].running = false;
             }
+
+            if (scope.events.length > 11) {
+                if (Math.round(Date.now() / 1000) - scope.events[s].end - (60 * 30) > 0) {
+                    scope.events.splice(s,1);
+                }
+            }
         }  
         console.log("success");
     };
