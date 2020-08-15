@@ -162,6 +162,7 @@ app.controller('EventsController', ['$scope', '$http', '$location', '$timeout', 
             if (scope.events.length > 10) {
                 if (Math.round(Date.now() / 1000) - scope.events[s].end - (60 * 30) > 0) {
                     scope.events.splice(s,1);
+                    s--;
                 }
             }
         }
