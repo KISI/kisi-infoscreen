@@ -1,14 +1,7 @@
 <div class="app-bar fixed-top" data-role="appbar">
   <a class="app-bar-element" href="#/">KISI Infoscreen Backend</a>
   <span class="app-bar-divider"></span>
-  <ul class="app-bar-menu">
-    <li>
-      <a href="#/">Home</a>
-    </li>
-    <li>
-      <a href="#/02-05-2020">Beispiellink 2.5.2020</a>
-    </li>
-  </ul>
+  <ul class="app-bar-menu" ng-bind-html="menu"></ul>
 
   <div class="app-bar-element place-right">
     <a class="fg-white" ng-click="menu.logout()">
