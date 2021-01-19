@@ -78,24 +78,28 @@
   //---Controller---//
   app.controller('MenuController', ['$rootScope', '$window', '$cookies', '$scope', '$http', '$routeParams', '$sce', function($rootScope, $window, $cookies, $scope, $http, $routeParams, $sce) {
     var scope = $scope;
-    var menu = '<li><a href="#/">Home</a></li>';
-    if ($routeParams.day) {
-      var date = $routeParams.day.split('-');
-      var day = new Date(date[2],parseInt(date[1])-1,parseInt(date[0]))
-      var previous = new Date(day.getTime() - 86400000);
-      var next = new Date(day.getTime() + 86400000);
-      menu += '<li><a href="#/' + previous.getDate() + '-' + (previous.getMonth()+1) + '-' + previous.getFullYear() + '">Previous</a></li>';
-      menu += '<li><a href="#/' + now.getDate() + '-' + (now.getMonth()+1) + '-' + now.getFullYear() + '">' + now.getDate() + '-' + (now.getMonth()+1) + '-' + now.getFullYear() + '</a></li>';
-      menu += '<li><a href="#/' + next.getDate() + '-' + (next.getMonth()+1) + '-' + next.getFullYear() + '">Next</a></li>';
-    } else {
-      var now = new Date();
-      var yesterday = new Date(now.getTime() - 86400000);
-      var tomorrow = new Date(now.getTime() + 86400000);
-      menu += '<li><a href="#/' + yesterday.getDate() + '-' + (yesterday.getMonth()+1) + '-' + yesterday.getFullYear() + '">Yesterday</a></li>';
-      menu += '<li><a href="#/' + now.getDate() + '-' + (now.getMonth()+1) + '-' + now.getFullYear() + '">Today</a></li>';
-      menu += '<li><a href="#/' + tomorrow.getDate() + '-' + (tomorrow.getMonth()+1) + '-' + tomorrow.getFullYear() + '">Tomorrow</a></li>';
-    }
-    scope.menu = $sce.trustAsHtml(menu);
+    var routeParams = $routeParams;
+    
+    scope.$on('$routeChangeSuccess', function($event, current, previous) { 
+      var menu = '<li><a href="#/">Home</a></li>';
+      if (routeParams.day) {
+        var date = $routeParams.day.split('-');
+        var day = new Date(date[2],parseInt(date[1])-1,parseInt(date[0]))
+        var previous = new Date(day.getTime() - 86400000);
+        var next = new Date(day.getTime() + 86400000);
+        menu += '<li><a href="#/' + previous.getDate() + '-' + (previous.getMonth()+1) + '-' + previous.getFullYear() + '">Previous</a></li>';
+        menu += '<li><a href="#/' + now.getDate() + '-' + (now.getMonth()+1) + '-' + now.getFullYear() + '">' + now.getDate() + '-' + (now.getMonth()+1) + '-' + now.getFullYear() + '</a></li>';
+        menu += '<li><a href="#/' + next.getDate() + '-' + (next.getMonth()+1) + '-' + next.getFullYear() + '">Next</a></li>';
+      } else {
+        var now = new Date();
+        var yesterday = new Date(now.getTime() - 86400000);
+        var tomorrow = new Date(now.getTime() + 86400000);
+        menu += '<li><a href="#/' + yesterday.getDate() + '-' + (yesterday.getMonth()+1) + '-' + yesterday.getFullYear() + '">Yesterday</a></li>';
+        menu += '<li><a href="#/' + now.getDate() + '-' + (now.getMonth()+1) + '-' + now.getFullYear() + '">Today</a></li>';
+        menu += '<li><a href="#/' + tomorrow.getDate() + '-' + (tomorrow.getMonth()+1) + '-' + tomorrow.getFullYear() + '">Tomorrow</a></li>';
+      }
+      scope.menu = $sce.trustAsHtml(menu);
+    });
     
     this.logout = function() {
       $cookies.remove('token');
