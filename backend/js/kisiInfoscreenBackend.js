@@ -79,6 +79,7 @@
   app.controller('MenuController', ['$rootScope', '$window', '$cookies', '$scope', '$http', '$routeParams', '$sce', function($rootScope, $window, $cookies, $scope, $http, $routeParams, $sce) {
     var scope = $scope;
     var routeParams = $routeParams;
+    scope.menu = $sce.trustAsHtml("");
     
     scope.$on('$routeChangeSuccess', function($event, current, previous) { 
       var menu = '<li><a href="#/">Home</a></li>';
@@ -88,7 +89,7 @@
         var previous = new Date(day.getTime() - 86400000);
         var next = new Date(day.getTime() + 86400000);
         menu += '<li><a href="#/' + previous.getDate() + '-' + (previous.getMonth()+1) + '-' + previous.getFullYear() + '">Previous</a></li>';
-        menu += '<li><a href="#/' + now.getDate() + '-' + (now.getMonth()+1) + '-' + now.getFullYear() + '">' + now.getDate() + '-' + (now.getMonth()+1) + '-' + now.getFullYear() + '</a></li>';
+        menu += '<li><a href="#/' + day.getDate() + '-' + (day.getMonth()+1) + '-' + day.getFullYear() + '">' + day.getDate() + '-' + (day.getMonth()+1) + '-' + day.getFullYear() + '</a></li>';
         menu += '<li><a href="#/' + next.getDate() + '-' + (next.getMonth()+1) + '-' + next.getFullYear() + '">Next</a></li>';
       } else {
         var now = new Date();
