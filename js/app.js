@@ -219,7 +219,7 @@ app.controller('EventsController', ['$scope', '$http', '$location', '$timeout', 
     
     var loadEvents = function() {
         let date = Date.now();
-        $http.get('/api/events?count=20&start=' + (Math.round((date - date % 86400000) / 1000))).then(eventsSuccess, function(response) {
+        $http.get('/api/events?count=100&start=' + (Math.round((date - date % 86400000) / 1000))).then(eventsSuccess, function(response) {
             console.log("error");
         });
         $http.get('/api/events?count=1&minend=' + (Math.round(Date.now() / 1000)) + '&maxstart=' + (Math.round((date + 86400000 - date % 86400000) / 1000))).then(function(response){
