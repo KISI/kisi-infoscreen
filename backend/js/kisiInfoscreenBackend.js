@@ -160,6 +160,36 @@
         });
       }
     };
+
+    scope.cloneUntil = function() {
+      if (!scope.current) {
+        var date = scope.day.split('-');
+        scope.current = new Date(date[2],parseInt(date[1])-1,parseInt(date[0]));
+      }
+      
+      scope.current.setDate(scope.current.getDate() + 1);
+      
+      if (scope.newdate) {
+        var dateuntil = scope.newdate.split('-');
+        var until = new Date(dateuntil[2],parseInt(dateuntil[1])-1,parseInt(dateuntil[0]),23,59);
+        
+        if (current > until) {
+          location.href = "/backend/#/" + scope.newdate;
+          return;
+        }
+        
+        var request = {
+          "date": scope.day,
+          "newdate": current.getDate() + '-' + (current.getMonth()+1) + '-' + current.getFullYear(),
+        };
+
+        $http.post('/api/backend/events/clone', request).then(function(response) {
+          scope.cloneUntil();
+        }, function(response) {
+          console.log(response);
+        });
+      }
+    };
   }]);
   
   app.controller('EventController', ['$http', '$scope', '$rootScope', '$routeParams', function ($http, $scope, $rootScope, $routeParams) {
