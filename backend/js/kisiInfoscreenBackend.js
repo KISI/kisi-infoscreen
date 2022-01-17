@@ -173,14 +173,14 @@
         var dateuntil = scope.newdate.split('-');
         var until = new Date(dateuntil[2],parseInt(dateuntil[1])-1,parseInt(dateuntil[0]),23,59);
         
-        if (current > until) {
+        if (scope.current > until) {
           location.href = "/backend/#/" + scope.newdate;
           return;
         }
         
         var request = {
           "date": scope.day,
-          "newdate": current.getDate() + '-' + (current.getMonth()+1) + '-' + current.getFullYear(),
+          "newdate": scope.current.getDate() + '-' + (scope.current.getMonth()+1) + '-' + scope.current.getFullYear(),
         };
 
         $http.post('/api/backend/events/clone', request).then(function(response) {
