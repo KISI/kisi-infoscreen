@@ -242,6 +242,11 @@ app.controller('EventsController', ['$scope', '$http', '$location', '$timeout', 
     
     tick();
     
+    if ($location.search()['nobg'] == 1)
+    {
+        jQuery("body").css('background', 'transparent');
+    }
+    
 }]);
 
 $.fn.extend({
