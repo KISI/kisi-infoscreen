@@ -3,7 +3,7 @@ body {
     font-weight: 300;
     font-size: 4vh;
     overflow: hidden;
-    background: url('../img/Background.png') no-repeat center center fixed;
+    background: url('../img/Background.png') no-repeat right center fixed;
     /*background-image: url('../img/roundgreen.png'), url('../img/background.png');*/
     background-blend-mode: soft-light;
     -webkit-background-size: cover;
@@ -13,7 +13,7 @@ body {
 }
 
 * {
-    color: white;
+    color: black;
 }
 
 /*body:after {
