@@ -16,7 +16,7 @@
 <body>
     <!--<clock></clock>-->
     <heading></heading>
-    <div ng-controller="EventsController as EventsCtrl" class="eventsblock">
+    <div ng-controller="EventsController as EventsCtrl" class="eventsblock" style="width:70%;">
         <div ng-repeat="event in eventsrunning" class="events">
             <div class="row event running" ng-class="{'bold': event.featured}">
                 <div class="left">
@@ -36,6 +36,8 @@
             </div>
         </div>
     </div>
+	<div id="background" style="position:absolute;width:30%;height:100%;top:0;right:0;background:#ffc425;">
+   <img style="width:calc(100% - 4vw);margin:2vw" src="img/Background.png"></div>
 	<!--<div id="legende">
 				<span class="element">
 					<img src="img/sponsor (1).jpg" />
