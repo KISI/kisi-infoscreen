@@ -242,6 +242,13 @@ app.controller('EventsController', ['$scope', '$http', '$location', '$timeout', 
     
     tick();
     
+    var reloadTick = function() {
+        location.reload(true);
+        $timeout(reloadTick,3600000);
+    }
+    
+    $timeout(reloadTick,3600000);
+    
     if ($location.search()['nobg'] == 1)
     {
         jQuery("body").css('background', 'transparent');
